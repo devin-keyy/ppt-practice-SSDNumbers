@@ -7,9 +7,17 @@ public class SSDNumber {
     /********** Task 1 **********/
 
     public static boolean isSemiSelfDescriptive(String intAsString) {
-        // TODO: Implement this method
-        return false;
-    }
+        for (char digitChar : intAsString.toCharArray()) {
+            int digit = Character.getNumericValue(digitChar);
+            // Construct a regex that matches the digit exactly 'digit' times
+            String regex = "(?:.*" + digit + ".*){" + digit + "}";
+            // Check if the number matches this condition
+            if (!intAsString.matches(regex)) {
+                return false;
+            }
+        }
+        return true;
+}
 
 
     /********** Task 2 **********/
